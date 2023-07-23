@@ -27,7 +27,8 @@ export class Level extends Scene {
         const platformPositions = [
             new Vector(226, 302),
             new Vector(620, 368),
-            new Vector(986, 206)
+            new Vector(986, 206),
+            new Vector(1050, 206)
         ]
 
         for (let p of platformPositions) {
