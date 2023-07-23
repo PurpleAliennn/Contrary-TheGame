@@ -1,4 +1,4 @@
-import { Vector, Physics, Scene, DisplayMode } from "excalibur";
+import { Vector, Physics, Scene, DisplayMode, Actor, CollisionType } from "excalibur";
 
 import { Background } from './Actors/background.js'
 import { Platform } from "./Actors/platform.js";
@@ -23,12 +23,35 @@ export class Level extends Scene {
         const background = new Background();
         this.add(background);
 
+        let leftWall = new Actor({
+            pos: new Vector(24, 100),
+            width: 5,
+            height: 1000,
+            collisionType: CollisionType.Fixed
+        })
+
+        this.add(leftWall);
+
+        let rightWall = new Actor({
+            pos: new Vector(2956, 100),
+            width: 5,
+            height: 1000,
+            collisionType: CollisionType.Fixed
+        })
+
+        this.add(rightWall);
+
 
         const platformPositions = [
-            new Vector(226, 302),
-            new Vector(620, 368),
-            new Vector(986, 206),
-            new Vector(1320, 206)
+            new Vector(70, 304),
+            new Vector(463, 369),
+            new Vector(831, 206),
+            new Vector(1165, 207),
+            new Vector(1595, 272),
+            new Vector(1915, 345),
+            new Vector(2265, 222),
+            new Vector(2650, 160),
+            new Vector(2970, 315)
         ]
 
         for (let p of platformPositions) {

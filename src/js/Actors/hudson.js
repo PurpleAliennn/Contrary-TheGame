@@ -11,8 +11,8 @@ export class Hudson extends Actor {
     constructor(){
         
         super({
-            height: 90,
-            width: 80
+            height: 80,
+            width: 60
         })
 
     }
@@ -30,7 +30,7 @@ export class Hudson extends Actor {
         this.graphics.use('happyHudson');
         this.scale = new Vector(0.8, 0.8);
 
-        this.pos = new Vector(226, 280)
+        this.pos = new Vector(50, 280)
 
         this.on('collisionstart', (event) => { this.isGrounded(event)} );
     }
@@ -63,7 +63,7 @@ export class Hudson extends Actor {
                 this.grounded = false;
             }
 
-            if(engine.input.keyboard.wasPressed(Input.Keys.V)){
+            if(engine.input.keyboard.wasPressed(Input.Keys.W)){
                 yspeed = -550
             }
         }
@@ -73,6 +73,6 @@ export class Hudson extends Actor {
             this.vel.y + yspeed
         )
 
-        engine.currentScene.camera.x = this.pos.x + 350
+        engine.currentScene.camera.x = this.pos.x + 310
     }
 }

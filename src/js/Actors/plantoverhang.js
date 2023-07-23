@@ -11,7 +11,7 @@ export class Plant extends Actor {
     }
 
     onInitialize(){
-        this.pos = new Vector (1825, 297);
+        this.pos = new Vector (1670, 298);
         // this.scale = new Vector(0.9,0.9)
 
         this.graphics.add(Resources.PlantOverhang.toSprite());
