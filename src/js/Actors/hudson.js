@@ -63,7 +63,7 @@ export class Hudson extends Actor {
                 this.grounded = false;
             }
 
-            if(engine.input.keyboard.wasPressed(Input.Keys.E)){
+            if(engine.input.keyboard.wasPressed(Input.Keys.V)){
                 yspeed = -550
             }
         }
