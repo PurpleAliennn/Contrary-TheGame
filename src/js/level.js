@@ -4,18 +4,49 @@ import { Background } from './Actors/background.js'
 import { Platform } from "./Actors/platform.js";
 import { Plant } from "./Actors/plantoverhang.js";
 import { Hudson } from "./Actors/hudson.js";
+import { Milk } from "./Actors/milk.js";
 
 export class Level extends Scene {
 
+    hudson
+    milk
+    milkPositions
+    plant
+
     constructor(){
         super({
-            // width: 1920,
-            // height: 1080
             displayMode: DisplayMode.FitScreenAndFill
         });
 
         Physics.useArcadePhysics();
         Physics.gravity = new Vector(0, 800);
+    }
+
+    onActivate(ctx){
+
+        this.hudson = new Hudson();
+        this.add(this.hudson);
+
+        this.plant = new Plant();
+        this.add(this.plant);
+
+        this.hudson.pos = new Vector(50, 280)
+
+        this.hudson.reset();
+        this.hudson.health = 100;
+
+        this.milkPositions = [
+            new Vector(492, 305),
+            new Vector(1610, 205),
+            new Vector(2685, 92)
+        ]
+
+        for (let m of this.milkPositions) {
+            const milk = new Milk();
+            milk.pos = m;
+            this.add(milk);
+        }
+
     }
 
     onInitialize(engine){
@@ -60,11 +91,10 @@ export class Level extends Scene {
             this.add(platform);
         }
 
-        const hudson = new Hudson();
-        this.add(hudson);
-        // this.hudson.pos = new Vector(226, 299)
 
-        const plant = new Plant();
-        this.add(plant);
+    }
+
+    onDeactivate(){
+        this.plant.kill();
     }
 }

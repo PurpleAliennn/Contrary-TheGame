@@ -13,9 +13,28 @@ export class Hudson extends Actor {
         super({
             height: 80,
             width: 60
+        });
+
+        this.timer = new Timer({
+            fcn: () => this.graphics.use('happyHudson'),
+            repeats: false,
+            interval: 1000
+        })
+
+        this.deathTimer = new Timer({
+            fcn: () => this.game.goToScene('gameOver'),
+            repeats: false,
+            interval: 200
         })
 
     }
+
+    onActivate(ctx){
+
+        this.hudson.pos = new Vector(50, 280);
+        this.hudson.reset();
+
+    } 
 
     onInitialize(engine){
 
@@ -30,7 +49,10 @@ export class Hudson extends Actor {
         this.graphics.use('happyHudson');
         this.scale = new Vector(0.8, 0.8);
 
-        this.pos = new Vector(50, 280)
+        this.pos = new Vector(50, 280);
+
+        this.game.currentScene.add(this.timer);
+        this.game.currentScene.add(this.deathTimer);
 
         this.on('collisionstart', (event) => { this.isGrounded(event)} );
     }
@@ -41,6 +63,13 @@ export class Hudson extends Actor {
             console.log("you're on a platform");
             this.grounded = true;
         }
+
+    }
+
+    reset(){
+
+        this.graphics.use('happyHudson');
+        this.health = 100;
 
     }
 
@@ -59,12 +88,13 @@ export class Hudson extends Actor {
 
         if(this.grounded) {
             if(engine.input.keyboard.wasPressed(Input.Keys.Space)){
-                yspeed = -400;
+                yspeed = -438;
                 this.grounded = false;
             }
 
             if(engine.input.keyboard.wasPressed(Input.Keys.W)){
-                yspeed = -550
+                yspeed = -550;
+                this.grounded = false;
             }
         }
 
@@ -74,5 +104,19 @@ export class Hudson extends Actor {
         )
 
         engine.currentScene.camera.x = this.pos.x + 310
+    }
+
+    takeDamage(amount){
+
+        this.health -= amount;
+
+        this.graphics.use('sadHudson');
+        this.timer.start();
+
+        if(this.health < 1){
+            this.deathTimer.start();
+            this.kill();
+        }
+
     }
 }
