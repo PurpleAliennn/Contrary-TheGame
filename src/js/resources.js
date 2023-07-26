@@ -1,4 +1,4 @@
-import { ImageSource, Loader } from 'excalibur'
+import { ImageSource, Loader, Color } from 'excalibur'
 
 import contraryBackground from '../images/contraryBackground.png'
 import plantOverhang from '../images/plantOverhang.png'
@@ -13,6 +13,8 @@ import gameOver from '../images/gameOver.png'
 import tryAgain from '../images/tryAgain.png'
 import startGame from '../images/startGame.png'
 
+import loadingScreen from '../images/loadingscreen.png'
+
 const Resources = {
 
     ContraryBackground: new ImageSource(contraryBackground),
@@ -26,7 +28,8 @@ const Resources = {
 
     GameOver: new ImageSource(gameOver),
     TryAgain: new ImageSource(tryAgain),
-    StartGame: new ImageSource(startGame)
+    StartGame: new ImageSource(startGame),
+
 }
 
 const ResourceLoader = new Loader([
@@ -44,5 +47,11 @@ const ResourceLoader = new Loader([
     Resources.TryAgain,
     Resources.StartGame
 ])
+
+ResourceLoader.logo = loadingScreen;
+
+ResourceLoader.backgroundColor = Color.fromHex('#F3EB9A');
+ResourceLoader.loadingBarColor = Color.fromHex('#232323');
+
 
 export { Resources, ResourceLoader }

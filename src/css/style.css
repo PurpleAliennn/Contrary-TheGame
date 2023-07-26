@@ -3,3 +3,12 @@ body {
     padding: 0;
     background-color: rgba(243, 235, 154, 1);
   }
+
+  #excalibur-play {
+    background: rgba(35, 35, 35, 1) !important;
+    color:  rgba(243, 235, 154, 1)!important;
+  }
+
+  button#excalibur-play:after{
+    border-color: transparent transparent transparent rgba(243, 235, 154, 1) !important;
+  }
