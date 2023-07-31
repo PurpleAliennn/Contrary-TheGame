@@ -1,11 +1,7 @@
-import { Vector, Scene, DisplayMode, Input, } from "excalibur";
+import { Vector, Scene, DisplayMode, Input } from "excalibur";
 import { StartBackground } from "./Actors/startBackground.js";
 
-import { Resources } from "./resources.js";
-
 export class StartScreen extends Scene {
-
-    music
 
     constructor(){
         super({
@@ -13,16 +9,10 @@ export class StartScreen extends Scene {
         })
     }
 
-
     onInitialize(){
 
         const background = new StartBackground();
         this.add(background);
-
-        this.music = Resources.Contrary
-
-        this.music.loop = true;
-        this.music.play();
 
     }
 
@@ -32,9 +22,5 @@ export class StartScreen extends Scene {
             this.engine.goToScene('level');
         }
         
-    }
-
-    onDeactivate(){
-        this.music.pause()
     }
 }

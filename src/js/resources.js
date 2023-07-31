@@ -1,4 +1,4 @@
-import { ImageSource, Loader, Color, Sound } from 'excalibur'
+import { ImageSource, Loader, Color } from 'excalibur'
 
 import contraryBackground from '../images/contraryBackground.png'
 import plantOverhang from '../images/plantOverhang.png'
@@ -15,8 +15,6 @@ import startGame from '../images/startGame.png'
 
 import loadingScreen from '../images/loadingscreen.png'
 
-import contrary from '../Sound/contrary-soft.wav'
-
 const Resources = {
 
     ContraryBackground: new ImageSource(contraryBackground),
@@ -31,8 +29,6 @@ const Resources = {
     GameOver: new ImageSource(gameOver),
     TryAgain: new ImageSource(tryAgain),
     StartGame: new ImageSource(startGame),
-
-    Contrary: new Sound(contrary)
 
 }
 
@@ -49,9 +45,7 @@ const ResourceLoader = new Loader([
 
     Resources.GameOver,
     Resources.TryAgain,
-    Resources.StartGame,
-
-    Resources.Contrary
+    Resources.StartGame
 ])
 
 ResourceLoader.logo = loadingScreen;

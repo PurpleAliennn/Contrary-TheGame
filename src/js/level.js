@@ -5,7 +5,6 @@ import { Platform } from "./Actors/platform.js";
 import { Plant } from "./Actors/plantoverhang.js";
 import { Hudson } from "./Actors/hudson.js";
 import { Milk } from "./Actors/milk.js";
-import { Resources } from "./resources.js";
 
 export class Level extends Scene {
 
@@ -13,7 +12,6 @@ export class Level extends Scene {
     milk
     milkPositions
     plant
-    music
 
     constructor(){
         super({
@@ -52,11 +50,6 @@ export class Level extends Scene {
     }
 
     onInitialize(engine){
-
-        this.music = Resources.Contrary
-
-        this.music.loop = true;
-        this.music.play();
         
         const background = new Background();
         this.add(background);
@@ -103,6 +96,5 @@ export class Level extends Scene {
 
     onDeactivate(){
         this.plant.kill();
-        // this.music.pause();
     }
 }
