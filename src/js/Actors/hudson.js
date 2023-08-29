@@ -117,6 +117,9 @@ export class Hudson extends Actor {
             this.deathTimer.start();
             this.kill();
         }
+    }
 
+    winGame(){
+        this.kill()
     }
 }

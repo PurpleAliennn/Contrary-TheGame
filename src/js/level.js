@@ -5,6 +5,8 @@ import { Platform } from "./Actors/platform.js";
 import { Plant } from "./Actors/plantoverhang.js";
 import { Hudson } from "./Actors/hudson.js";
 import { Milk } from "./Actors/milk.js";
+import { VictoryPlatform } from "./Actors/victoryPlatform.js";
+import { BottomBorder } from "./Actors/bottomBorder.js";
 
 export class Level extends Scene {
 
@@ -54,6 +56,9 @@ export class Level extends Scene {
         const background = new Background();
         this.add(background);
 
+        const bottom = new BottomBorder();
+        this.add(bottom)
+
         let leftWall = new Actor({
             pos: new Vector(24, 100),
             width: 5,
@@ -82,7 +87,6 @@ export class Level extends Scene {
             new Vector(1915, 345),
             new Vector(2265, 222),
             new Vector(2650, 160),
-            new Vector(2970, 315)
         ]
 
         for (let p of platformPositions) {
@@ -91,7 +95,9 @@ export class Level extends Scene {
             this.add(platform);
         }
 
-
+        let winPlatform = new VictoryPlatform();
+        winPlatform.pos = new Vector(2970, 315)
+        this.add(winPlatform);
     }
 
     onDeactivate(){

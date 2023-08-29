@@ -4,6 +4,7 @@ import { ResourceLoader } from './resources';
 import { Level } from './level';
 import { GameOver } from './gameover';
 import { StartScreen } from './start';
+import { Victory } from './victory';
 
 export class Game extends Engine {
 
@@ -14,7 +15,7 @@ export class Game extends Engine {
             displayMode: DisplayMode.FitScreenAndFill
         });
 
-        //this.showDebug(true);
+        // this.showDebug(true);
 
         this.start(ResourceLoader).then(() => this.startGame());
 
@@ -27,6 +28,7 @@ export class Game extends Engine {
         this.addScene('level', new Level());
         this.addScene('gameOver', new GameOver());
         this.addScene('start', new StartScreen());
+        this.addScene('victory', new Victory());
 
         this.goToScene('start');
     }
