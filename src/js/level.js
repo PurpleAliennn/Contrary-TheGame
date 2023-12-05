@@ -5,15 +5,21 @@ import { Platform } from "./Actors/platform.js";
 import { Plant } from "./Actors/plantoverhang.js";
 import { Hudson } from "./Actors/hudson.js";
 import { Milk } from "./Actors/milk.js";
+import { Lemon } from "./Actors/lemon.js";
 import { VictoryPlatform } from "./Actors/victoryPlatform.js";
 import { BottomBorder } from "./Actors/bottomBorder.js";
+import { UI } from "./overlay.js";
 
 export class Level extends Scene {
 
     hudson
     milk
     milkPositions
+    lemon
+    lemonPositions
     plant
+
+    lemonCollect = 0;
 
     constructor(){
         super({
@@ -22,6 +28,12 @@ export class Level extends Scene {
 
         Physics.useArcadePhysics();
         Physics.gravity = new Vector(0, 800);
+    }
+
+    gainLemons(amount) {
+        this.lemonCollect += amount;
+        console.log(this.lemonCollect);
+        this.ui.updateLemons(this.lemonCollect);
     }
 
     onActivate(ctx){
@@ -48,6 +60,24 @@ export class Level extends Scene {
             milk.pos = m;
             this.add(milk);
         }
+
+        this.lemonPositions = [
+            new Vector(831, 150),
+            new Vector(1990, 285),
+            new Vector(2330, 165),
+            new Vector(2610, 100)
+        ]
+
+        for (let l of this.lemonPositions) {
+            const lemon = new Lemon();
+            lemon.pos = l;
+            this.add(lemon);
+        }
+
+        this.lemonCollect = 0;
+
+        this.ui = new UI();
+        this.add(this.ui);
 
     }
 
@@ -102,5 +132,6 @@ export class Level extends Scene {
 
     onDeactivate(){
         this.plant.kill();
+        this.ui.kill();
     }
 }

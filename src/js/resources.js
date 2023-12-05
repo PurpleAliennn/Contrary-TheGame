@@ -18,6 +18,10 @@ import winGame from '../images/win.png'
 import loadingScreen from '../images/loadingscreen.png'
 
 import contrary from '../Sounds/contrary.wav'
+import hudsonHurt from '../Sounds/hudsonHurt.wav'
+import jump from '../Sounds/jump.wav'
+import bigJump from '../Sounds/bigJump.wav'
+import collectLemon from '../Sounds/collectLemon.wav'
 
 const Resources = {
 
@@ -36,7 +40,11 @@ const Resources = {
     StartGame: new ImageSource(startGame),
     WinGame: new ImageSource(winGame),
 
-    Contrary: new Sound(contrary)
+    Contrary: new Sound(contrary),
+    HudsonHurt: new Sound(hudsonHurt),
+    Jump: new Sound(jump),
+    BigJump: new Sound(bigJump),
+    CollectLemon: new Sound(collectLemon),
 
 }
 
@@ -57,7 +65,12 @@ const ResourceLoader = new Loader([
     Resources.StartGame,
     Resources.WinGame,
 
-    Resources.Contrary
+    Resources.Contrary,
+    Resources.HudsonHurt,
+    Resources.Jump,
+    Resources.BigJump,
+    Resources.CollectLemon
+    
 ])
 
 ResourceLoader.logo = loadingScreen;

@@ -7,6 +7,9 @@ export class Hudson extends Actor {
 
     health = 100;
     grounded
+    soundHurt
+    soundJump
+    soundJumpBig
 
     constructor(){
         
@@ -51,6 +54,10 @@ export class Hudson extends Actor {
 
         this.pos = new Vector(50, 280);
 
+        this.soundHurt = Resources.HudsonHurt;
+        this.soundJump = Resources.Jump;
+        this.soundJumpBig = Resources.BigJump;
+
         this.game.currentScene.add(this.timer);
         this.game.currentScene.add(this.deathTimer);
 
@@ -90,11 +97,13 @@ export class Hudson extends Actor {
             if(engine.input.keyboard.wasPressed(Input.Keys.Space)){
                 yspeed = -438;
                 this.grounded = false;
+                this.soundJump.play(0.1);
             }
 
             if(engine.input.keyboard.wasPressed(Input.Keys.W)){
                 yspeed = -550;
                 this.grounded = false;
+                this.soundJumpBig.play(0.05);
             }
         }
 
@@ -111,6 +120,8 @@ export class Hudson extends Actor {
         this.health -= amount;
 
         this.graphics.use('sadHudson');
+        this.soundHurt.play(0.2);
+
         this.timer.start();
 
         if(this.health < 1){
