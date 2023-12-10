@@ -17,13 +17,8 @@ export class StartScreen extends Scene {
 
     onInitialize(){
 
-
-        // this.bgMusic = new Audio(music)
-        // this.bgMusic.loop = true
-        // this.bgMusic.play()
         this.music = Resources.Contrary;
 
-        // music.loop = true;
         this.music.play(0.05);
 
         const background = new StartBackground();
@@ -34,7 +29,7 @@ export class StartScreen extends Scene {
     onPreUpdate(engine){
 
         if(engine.input.keyboard.wasPressed(Input.Keys.Space)){
-            this.engine.goToScene('level');
+            this.engine.goToScene('tutorial');
         }
 
     }

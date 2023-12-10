@@ -14,6 +14,8 @@ import gameOver from '../images/gameOver.png'
 import tryAgain from '../images/tryAgain.png'
 import startGame from '../images/startGame.png'
 import winGame from '../images/win.png'
+import tutorial from '../images/tutorial.png'
+import credits from '../images/creditScreen.png'
 
 import loadingScreen from '../images/loadingscreen.png'
 
@@ -39,6 +41,8 @@ const Resources = {
     TryAgain: new ImageSource(tryAgain),
     StartGame: new ImageSource(startGame),
     WinGame: new ImageSource(winGame),
+    TutorialScreen: new ImageSource(tutorial),
+    CreditScreen: new ImageSource(credits),
 
     Contrary: new Sound(contrary),
     HudsonHurt: new Sound(hudsonHurt),
@@ -64,6 +68,8 @@ const ResourceLoader = new Loader([
     Resources.TryAgain,
     Resources.StartGame,
     Resources.WinGame,
+    Resources.TutorialScreen,
+    Resources.CreditScreen,
 
     Resources.Contrary,
     Resources.HudsonHurt,

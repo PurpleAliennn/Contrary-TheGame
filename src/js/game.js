@@ -5,6 +5,8 @@ import { Level } from './level';
 import { GameOver } from './gameover';
 import { StartScreen } from './start';
 import { Victory } from './victory';
+import { TutorialTime } from './tutorial';
+import { CreditTime } from './credits';
 
 export class Game extends Engine {
 
@@ -29,6 +31,8 @@ export class Game extends Engine {
         this.addScene('gameOver', new GameOver());
         this.addScene('start', new StartScreen());
         this.addScene('victory', new Victory());
+        this.addScene('tutorial', new TutorialTime());
+        this.addScene('credits', new CreditTime());
 
         this.goToScene('start');
     }

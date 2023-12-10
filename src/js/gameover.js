@@ -29,7 +29,7 @@ export class GameOver extends Scene {
     onPreUpdate(engine){
 
         if(engine.input.keyboard.wasPressed(Input.Keys.Space)){
-            this.engine.goToScene('start');
+            this.engine.goToScene('credits');
         }
     }
 }

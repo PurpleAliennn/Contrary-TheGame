@@ -1,8 +1,8 @@
 import { Vector, Scene, DisplayMode, Input } from "excalibur";
-import { VictoryBackground } from "./Actors/victoryBackground";
+import { CreditBackground } from "./Actors/creditBackground";
 
 
-export class Victory extends Scene {
+export class CreditTime extends Scene {
 
     constructor(){
 
@@ -14,7 +14,7 @@ export class Victory extends Scene {
 
     onInitialize(){
 
-        const background = new VictoryBackground();
+        const background = new CreditBackground();
         this.add(background);
 
     }
@@ -22,7 +22,7 @@ export class Victory extends Scene {
     onPreUpdate(engine){
 
         if(engine.input.keyboard.wasPressed(Input.Keys.Space)){
-            this.engine.goToScene('credits');
+            this.engine.goToScene('start');
         }
     }
 }
